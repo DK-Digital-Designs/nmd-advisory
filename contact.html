@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — NMD Advisory</title>
+    <meta name="description" content="Contact NMD Advisory. Send an enquiry or schedule a Zoom/Teams meeting." />
+    <meta name="theme-color" content="#0b1b3a" />
+
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script defer src="assets/js/main.js"></script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="proto-banner" role="note">Website preview. Content and integrations will be finalised during implementation.</div>
+
+<header class="site-header" data-elevate>
+    <div class="container header-inner">
+        <a class="brand" href="./index.html" aria-label="NMD Advisory home">
+            <img class="brand-mark" src="assets/images/logo.svg" alt="" />
+            <span class="brand-name">NMD Advisory</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+            <a href="./services.html">Services</a>
+            <a href="./booking.html">Schedule</a>
+            <a href="./testimonials.html">Testimonials</a>
+            <a class="active" href="./contact.html">Contact</a>
+            <a class="nav-admin" href="./admin/index.html" title="Staff dashboard">Staff</a>
+        </nav>
+
+        <div class="header-cta">
+            <a class="btn btn-ghost" href="./booking.html">Schedule</a>
+            <a class="btn btn-primary" href="./contact.html#lead-form">Enquire</a>
+        </div>
+
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <div class="mobile-nav" data-mobile-nav hidden>
+        <a href="./services.html">Services</a>
+        <a href="./booking.html">Schedule</a>
+        <a href="./testimonials.html">Testimonials</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./admin/index.html">Staff</a>
+    </div>
+</header>
+
+<main id="main">
+    <section class="page-hero">
+        <div class="container">
+            <div class="kicker">Contact</div>
+            <h1>Get in touch</h1>
+            <p class="lead muted">
+                Send an enquiry or reserve a meeting slot. We aim to respond within 24–48 hours.
+            </p>
+            <div class="actions">
+                <a class="btn btn-primary" href="./booking.html">Schedule Zoom / Teams</a>
+                <a class="btn btn-ghost" href="#" data-whatsapp-link>WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container grid-2">
+            <section class="card-surface" id="lead-form">
+                <h2>Enquiry form</h2>
+                <p class="muted">This form can be connected to email/CRM and tracked in the staff dashboard.</p>
+
+                <form class="form" action="#" method="post">
+                    <div class="form-row">
+                        <label>
+                            Full name
+                            <input type="text" name="name" placeholder="e.g., Jane Smith" required />
+                        </label>
+
+                        <label>
+                            Email
+                            <input type="email" name="email" placeholder="e.g., jane@company.co.za" required />
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            Contact number (optional)
+                            <input type="tel" name="phone" placeholder="e.g., +27 82 123 4567" />
+                        </label>
+
+                        <label>
+                            Service area
+                            <select name="service" required>
+                                <option value="" selected disabled>Select a service</option>
+                                <option>Accounting</option>
+                                <option>Tax</option>
+                                <option>IT</option>
+                                <option>Business Solutions</option>
+                                <option>Not sure</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <label>
+                        Message
+                        <textarea name="message" rows="5" placeholder="Tell us what you need help with..." required></textarea>
+                    </label>
+
+                    <div class="form-row">
+                        <label class="checkbox">
+                            <input type="checkbox" />
+                            <span>Contact me on WhatsApp (optional)</span>
+                        </label>
+
+                        <label class="checkbox">
+                            <input type="checkbox" />
+                            <span>Send me meeting options (optional)</span>
+                        </label>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" type="submit">Send enquiry</button>
+
+                    <p class="muted small">
+                        POPIA consent language and privacy policy wording can be added here once finalised.
+                    </p>
+                </form>
+            </section>
+
+            <aside class="card-surface">
+                <h2>Direct contact (placeholder)</h2>
+                <p class="muted">Replace with final business details.</p>
+
+                <div class="info-list">
+                    <div class="info-item">
+                        <div class="info-label">Email</div>
+                        <div class="info-value"><a href="mailto:hello@nmdadvisory.co.za">hello@nmdadvisory.co.za</a></div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">WhatsApp</div>
+                        <div class="info-value"><a href="#" data-whatsapp-link>Chat on WhatsApp</a></div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">Hours</div>
+                        <div class="info-value">Mon–Fri • 08:00–17:00</div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">Location</div>
+                        <div class="info-value">City, Province (placeholder)</div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="panel">
+                    <h3>Prefer a scheduled call?</h3>
+                    <p class="muted small">Reserve a slot and we’ll confirm the details.</p>
+                    <a class="btn btn-ghost btn-block" href="./booking.html">Go to scheduling</a>
+                </div>
+
+                <div class="panel">
+                    <h3>External integrations (optional)</h3>
+                    <ul class="muted small">
+                        <li>Google / Outlook Calendar</li>
+                        <li>Zoom / Microsoft Teams meeting links</li>
+                        <li>WhatsApp quick contact</li>
+                        <li>Chat bot (optional)</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-bottom">
+        <span class="muted small">© <span data-year></span> NMD Advisory.</span>
+        <a class="muted small" href="./admin/index.html">Staff</a>
+    </div>
+</footer>
+
+<a class="fab" href="#" data-whatsapp-link aria-label="Chat on WhatsApp (placeholder)">
+    <span class="fab-dot" aria-hidden="true"></span>
+    WhatsApp
+</a>
+</body>
+</html>
