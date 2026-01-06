@@ -1,0 +1,27 @@
+{
+  "name": "nmd-advisory-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DK-Digital-Designs/nmd-advisory.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DK-Digital-Designs/nmd-advisory/issues"
+  },
+  "homepage": "https://github.com/DK-Digital-Designs/nmd-advisory#readme",
+  "description": "",
+  "devDependencies": {
+    "vite": "^7.3.0",
+    "vite-plugin-handlebars": "^2.0.0"
+  }
+}

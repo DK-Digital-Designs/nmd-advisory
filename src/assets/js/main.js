@@ -44,6 +44,30 @@
     }, 4500);
   }
 
+  // Active nav state
+  const currentPath = window.location.pathname;
+  // Normalize path (handle / and /index.html as same, or just match end)
+  const navLinks = document.querySelectorAll('.nav a, .mobile-nav a');
+  navLinks.forEach(link => {
+    // Get the path from the link href (which is absolute)
+    const url = new URL(link.href);
+    // loose match: if current path ends with this link's path
+    // handle root
+    const linkPath = url.pathname;
+
+    // Check if current page is this link
+    // E.g. /services.html vs /services.html
+    // Also handle / == /index.html if needed, but Vite usually serves / as /index.html
+
+    if (currentPath === linkPath || (linkPath.endsWith('/') && currentPath.endsWith('index.html'))) {
+      link.classList.add('active');
+    } else if (currentPath.endsWith('/') && linkPath.endsWith('index.html')) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+
   // WhatsApp placeholder (no alerts)
   const whatsappTargets = document.querySelectorAll("[data-whatsapp-link]");
   whatsappTargets.forEach(a => {
