@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="NMD Advisory logo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c9a875"/>
+      <stop offset="1" stop-color="#e1c99c"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="52" height="52" rx="16" fill="#0b1b3a"/>
+  <path d="M18 40V22h6l8 12 8-12h6v18h-6V31l-8 11-8-11v9z" fill="url(#g)"/>
+</svg>
