@@ -1,27 +1,27 @@
-import { defineConfig } from 'vite';
-import handlebars from 'vite-plugin-handlebars';
-import { resolve } from 'path';
+import { defineConfig } from "vite";
+import handlebars from "vite-plugin-handlebars";
+import { resolve } from "path";
 
 export default defineConfig(({ command }) => ({
-    base: command === 'serve' ? '/' : '/nmd-advisory-demo/',
-    root: 'src',
-    publicDir: '../public',
+    base: command === "serve" ? "/" : "/nmd-advisory/",
+    root: "src",
+    publicDir: "../public",
     build: {
-        outDir: '../dist',
+        outDir: "../dist",
         emptyOutDir: true,
         rollupOptions: {
             input: {
-                main: resolve(__dirname, 'src/index.html'),
-                services: resolve(__dirname, 'src/services.html'),
-                booking: resolve(__dirname, 'src/booking.html'),
-                testimonials: resolve(__dirname, 'src/testimonials.html'),
-                contact: resolve(__dirname, 'src/contact.html'),
+                main: resolve(__dirname, "src/index.html"),
+                services: resolve(__dirname, "src/services.html"),
+                booking: resolve(__dirname, "src/booking.html"),
+                testimonials: resolve(__dirname, "src/testimonials.html"),
+                contact: resolve(__dirname, "src/contact.html"),
             },
         },
     },
     plugins: [
         handlebars({
-            partialDirectory: resolve(__dirname, 'src/partials'),
+            partialDirectory: resolve(__dirname, "src/partials"),
         }),
     ],
 }));
