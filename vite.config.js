@@ -16,6 +16,9 @@ export default defineConfig(({ command }) => ({
                 booking: resolve(__dirname, "src/booking.html"),
                 testimonials: resolve(__dirname, "src/testimonials.html"),
                 contact: resolve(__dirname, "src/contact.html"),
+
+                // add this:
+                admin: resolve(__dirname, "src/admin/index.html"),
             },
         },
     },
