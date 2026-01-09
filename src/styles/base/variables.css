@@ -8,8 +8,8 @@
   --gold-2: #e1c99c;
   --white: #ffffff;
 
-  --bg: #f6f7fb;
-  --surface: #ffffff;
+  --bg: rgba(218, 214, 223, 0.51);
+  --surface: #c30ce6;
   --ink: #0d1220;
   --muted: #5a6478;
   --line: rgba(13, 18, 32, .12);
