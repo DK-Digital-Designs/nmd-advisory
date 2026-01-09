@@ -1,4 +1,4 @@
-(() => {
+
   (function () {
   const LOGIN_KEY = "nmd_admin_logged_in";
   const ADMIN_PASSWORD = "admin123"; // demo passcode
