@@ -51,3 +51,27 @@
 .btn-danger:hover {
     background: rgba(197, 54, 54, .14);
 }
+
+/* Buttons: glow + lift on hover */
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary:hover {
+    box-shadow:
+            0 18px 55px rgba(201, 168, 117, .33),
+            0 0 0 6px rgba(201, 168, 117, .14),
+            0 0 28px rgba(201, 168, 117, .35);
+}
+
+.btn-ghost:hover {
+    box-shadow:
+            0 16px 44px rgba(11, 27, 58, .10),
+            0 0 0 6px rgba(11, 27, 58, .08);
+}
+
+.btn-danger:hover {
+    box-shadow:
+            0 16px 44px rgba(197, 54, 54, .12),
+            0 0 0 6px rgba(197, 54, 54, .10);
+}

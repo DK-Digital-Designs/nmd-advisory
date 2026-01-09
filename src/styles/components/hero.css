@@ -10,23 +10,23 @@
     position: absolute;
     inset: -40px -40px auto -40px;
     height: 1200px;
+    pointer-events: none;
+    opacity: .95;
 
     background:
-        radial-gradient(700px 420px at 20% 10%, rgba(201, 168, 117, .28), transparent 55%),
-        radial-gradient(700px 420px at 80% 20%, rgba(15, 38, 82, .28), transparent 60%),
-       url("/pexels-jordy-vlietland-363893347-28744084.jpg");
+            radial-gradient(700px 420px at 20% 10%, rgba(201, 168, 117, .28), transparent 55%),
+            radial-gradient(700px 420px at 80% 20%, rgba(15, 38, 82, .28), transparent 60%),
+            url("/assets/images/background-hero.jpg"); /*  Do not touch, this works! ... */
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
-    opacity: .95;
-    pointer-events: none;
-
-    /* Parallax-ready */
     transform: scale(1.05);
     transition: transform 0.15s ease-out;
 }
+
+
 
 /* Ensure content stays above background */
 .hero-grid,
