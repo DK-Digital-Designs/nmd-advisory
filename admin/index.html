@@ -10,7 +10,7 @@
   <link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml" />
   <script defer src="../assets/js/main.js"></script>
   <script defer src="../assets/js/admin.js"></script>
-  <link rel="stylesheet" crossorigin href="/nmd-advisory/assets/styles-DzC2a80y.css">
+  <link rel="stylesheet" crossorigin href="/nmd-advisory/assets/styles-BgD82ICn.css">
 </head>
 
 <body class="admin-body">
@@ -20,20 +20,40 @@
     Staff dashboard preview. Authentication and data connections will be enabled during implementation.
   </div>
 
-  <header class="admin-header">
-    <div class="container admin-header-inner">
-      <a class="brand" href="../index.html" aria-label="Back to site">
-        <img class="brand-mark" src="../assets/images/logo.svg" alt="" />
-        <span class="brand-name">NMD Advisory</span>
-      </a>
+  <header class="site-header" data-elevate>
+      <div class="container header-inner">
+          <a class="brand" href="../index.html" aria-label="NMD Advisory home">
+              <img class="brand-mark" src="../assets/images/logo.svg" alt="" />
+              <span class="brand-name">NMD Advisory</span>
+          </a>
 
-      <div class="admin-actions">
-        <a class="btn btn-ghost" href="../booking.html">Scheduling</a>
-        <a class="btn btn-ghost" href="../contact.html">Contact</a>
-        <button class="btn btn-primary" type="button" data-admin-lock>Lock</button>
+          <nav class="nav" aria-label="Primary">
+              <a href="../services.html">Services</a>
+              <a href="../booking.html">Schedule</a>
+              <a href="../testimonials.html">Testimonials</a>
+              <a href="../contact.html">Contact</a>
+              <a class="nav-admin" href="./index.html" title="Staff dashboard">Staff</a>
+          </nav>
+
+          <div class="header-cta">
+              <a class="btn btn-ghost" href="../contact.html">Get in touch</a>
+              <a class="btn btn-primary" href="../booking.html">Schedule a meeting</a>
+          </div>
+
+          <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
+              <span></span><span></span><span></span>
+          </button>
       </div>
-    </div>
+
+      <div class="mobile-nav" data-mobile-nav hidden>
+          <a href="../services.html">Services</a>
+          <a href="../booking.html">Schedule</a>
+          <a href="../testimonials.html">Testimonials</a>
+          <a href="../contact.html">Contact</a>
+          <a href="./index.html">Staff</a>
+      </div>
   </header>
+
 
   <main id="main" class="admin-main">
     <div class="container">
@@ -187,10 +207,50 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-bottom">
-      <span class="muted small">Staff dashboard preview.</span>
-      <a class="muted small" href="../index.html">Back to site</a>
-    </div>
+      <div class="container footer-grid">
+          <div>
+              <div>
+                  <div class="footer-brand">
+                      <img src="../assets/images/logo.svg" alt="" />
+                      <div>
+                          <div class="footer-name">NMD Advisory</div>
+                          <div class="muted">Accounting • Tax • IT • Business Solutions</div>
+                      </div>
+                  </div>
+                  <p class="muted small">
+                      Preview site. Replace placeholders with final content, service descriptions, and contact details.
+                  </p>
+              </div>
+
+              <div>
+                  <div class="footer-title">Pages</div>
+                  <a href="../services.html">Services</a>
+                  <a href="../booking.html">Schedule</a>
+                  <a href="../testimonials.html">Testimonials</a>
+                  <a href="../contact.html">Contact</a>
+                  <a href="./index.html">Staff</a>
+              </div>
+
+              <div>
+                  <div class="footer-title">Contact</div>
+                  <a href="../contact.html#lead-form">Enquiry form</a>
+                  <a href="#" data-whatsapp-link>WhatsApp</a>
+                  <a href="mailto:hello@nmdadvisory.co.za">hello@nmdadvisory.co.za</a>
+                  <span class="muted small">Mon–Fri • 08:00–17:00</span>
+              </div>
+          </div>
+
+          <div class="container footer-bottom">
+              <span class="muted small">© <span data-year></span> NMD Advisory. All rights reserved.</span>
+              <span class="muted small">Privacy / POPIA (placeholder)</span>
+          </div>
+      </div>
   </footer>
+
+  <a class="fab" href="#" data-whatsapp-link aria-label="Chat on WhatsApp (placeholder)">
+      <span class="fab-dot" aria-hidden="true"></span>
+      WhatsApp
+  </a>
+
 </body>
 </html>
