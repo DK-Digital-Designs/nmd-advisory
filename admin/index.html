@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,10 +8,10 @@
   <meta name="description" content="Staff dashboard (preview)." />
   <meta name="theme-color" content="#0b1b3a" />
 
-    <link rel="icon" href="/nmd-advisory/assets/images/logo.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/nmd-advisory/assets/css/styles.css" />
-    <script defer src="/nmd-advisory/assets/js/main.js"></script>
-    <script defer src="/nmd-advisory/assets/js/admin.js"></script>
+  <link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <script defer src="../assets/js/main.js"></script>
+  <script defer src="../assets/js/admin.js"></script>
 
 </head>
 
@@ -22,37 +23,37 @@
   </div>
 
   <header class="site-header" data-elevate>
-      <div class="container header-inner">
-          <a class="brand" href="../index.html" aria-label="NMD Advisory home">
-              <img class="brand-mark" src="../assets/images/logo.svg" alt="" />
-              <span class="brand-name">NMD Advisory</span>
-          </a>
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="NMD Advisory home">
+        <img class="brand-mark" src="../assets/images/logo.svg" alt="" />
+        <span class="brand-name">NMD Advisory</span>
+      </a>
 
-          <nav class="nav" aria-label="Primary">
-              <a href="../services.html">Services</a>
-              <a href="../booking.html">Schedule</a>
-              <a href="../testimonials.html">Testimonials</a>
-              <a href="../contact.html">Contact</a>
-              <a class="nav-admin" href="./index.html" title="Staff dashboard">Staff</a>
-          </nav>
+      <nav class="nav" aria-label="Primary">
+        <a href="../services.html">Services</a>
+        <a href="../booking.html">Schedule</a>
+        <a href="../testimonials.html">Testimonials</a>
+        <a href="../contact.html">Contact</a>
+        <a class="nav-admin" href="./index.html" title="Staff dashboard">Staff</a>
+      </nav>
 
-          <div class="header-cta">
-              <a class="btn btn-ghost" href="../contact.html">Get in touch</a>
-              <a class="btn btn-primary" href="../booking.html">Schedule a meeting</a>
-          </div>
-
-          <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
-              <span></span><span></span><span></span>
-          </button>
+      <div class="header-cta">
+        <a class="btn btn-ghost" href="../contact.html">Get in touch</a>
+        <a class="btn btn-primary" href="../booking.html">Schedule a meeting</a>
       </div>
 
-      <div class="mobile-nav" data-mobile-nav hidden>
-          <a href="../services.html">Services</a>
-          <a href="../booking.html">Schedule</a>
-          <a href="../testimonials.html">Testimonials</a>
-          <a href="../contact.html">Contact</a>
-          <a href="./index.html">Staff</a>
-      </div>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" data-mobile-nav hidden>
+      <a href="../services.html">Services</a>
+      <a href="../booking.html">Schedule</a>
+      <a href="../testimonials.html">Testimonials</a>
+      <a href="../contact.html">Contact</a>
+      <a href="./index.html">Staff</a>
+    </div>
   </header>
 
 
@@ -129,7 +130,9 @@
                   </tr>
                 </thead>
                 <tbody data-bookings-table>
-                  <tr><td colspan="5" class="muted">No requests yet.</td></tr>
+                  <tr>
+                    <td colspan="5" class="muted">No requests yet.</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -138,7 +141,8 @@
 
             <div class="form-row">
               <button class="btn btn-ghost btn-block" type="button" data-export-bookings>Export (JSON)</button>
-              <button class="btn btn-primary btn-block" type="button" data-open-booking-page>Open scheduling page</button>
+              <button class="btn btn-primary btn-block" type="button" data-open-booking-page>Open scheduling
+                page</button>
             </div>
           </section>
 
@@ -189,17 +193,23 @@
             <div class="panel">
               <h3>Brand</h3>
               <p class="muted small">Colours, logo, typography.</p>
-              <div class="pill">Navy</div> <div class="pill">Gold</div> <div class="pill">White</div>
+              <div class="pill">Navy</div>
+              <div class="pill">Gold</div>
+              <div class="pill">White</div>
             </div>
             <div class="panel">
               <h3>Scheduling</h3>
               <p class="muted small">Provider, time slots, platform links.</p>
-              <div class="pill">Microsoft Bookings</div> <div class="pill">Calendly</div> <div class="pill">Custom</div>
+              <div class="pill">Microsoft Bookings</div>
+              <div class="pill">Calendly</div>
+              <div class="pill">Custom</div>
             </div>
             <div class="panel">
               <h3>Integrations</h3>
               <p class="muted small">WhatsApp, Chatbot, CRM.</p>
-              <div class="pill">WhatsApp</div> <div class="pill">Chatbot</div> <div class="pill">Email/CRM</div>
+              <div class="pill">WhatsApp</div>
+              <div class="pill">Chatbot</div>
+              <div class="pill">Email/CRM</div>
             </div>
           </div>
         </section>
@@ -208,50 +218,51 @@
   </main>
 
   <footer class="site-footer">
-      <div class="container footer-grid">
-          <div>
-              <div>
-                  <div class="footer-brand">
-                      <img src="../assets/images/logo.svg" alt="" />
-                      <div>
-                          <div class="footer-name">NMD Advisory</div>
-                          <div class="muted">Accounting • Tax • IT • Business Solutions</div>
-                      </div>
-                  </div>
-                  <p class="muted small">
-                      Preview site. Replace placeholders with final content, service descriptions, and contact details.
-                  </p>
-              </div>
-
-              <div>
-                  <div class="footer-title">Pages</div>
-                  <a href="../services.html">Services</a>
-                  <a href="../booking.html">Schedule</a>
-                  <a href="../testimonials.html">Testimonials</a>
-                  <a href="../contact.html">Contact</a>
-                  <a href="./index.html">Staff</a>
-              </div>
-
-              <div>
-                  <div class="footer-title">Contact</div>
-                  <a href="../contact.html#lead-form">Enquiry form</a>
-                  <a href="#" data-whatsapp-link>WhatsApp</a>
-                  <a href="mailto:hello@nmdadvisory.co.za">hello@nmdadvisory.co.za</a>
-                  <span class="muted small">Mon–Fri • 08:00–17:00</span>
-              </div>
+    <div class="container footer-grid">
+      <div>
+        <div>
+          <div class="footer-brand">
+            <img src="../assets/images/logo.svg" alt="" />
+            <div>
+              <div class="footer-name">NMD Advisory</div>
+              <div class="muted">Accounting • Tax • IT • Business Solutions</div>
+            </div>
           </div>
+          <p class="muted small">
+            Preview site. Replace placeholders with final content, service descriptions, and contact details.
+          </p>
+        </div>
 
-          <div class="container footer-bottom">
-              <span class="muted small">© <span data-year></span> NMD Advisory. All rights reserved.</span>
-              <span class="muted small">Privacy / POPIA (placeholder)</span>
-          </div>
+        <div>
+          <div class="footer-title">Pages</div>
+          <a href="../services.html">Services</a>
+          <a href="../booking.html">Schedule</a>
+          <a href="../testimonials.html">Testimonials</a>
+          <a href="../contact.html">Contact</a>
+          <a href="./index.html">Staff</a>
+        </div>
+
+        <div>
+          <div class="footer-title">Contact</div>
+          <a href="../contact.html#lead-form">Enquiry form</a>
+          <a href="#" data-whatsapp-link>WhatsApp</a>
+          <a href="mailto:hello@nmdadvisory.co.za">hello@nmdadvisory.co.za</a>
+          <span class="muted small">Mon–Fri • 08:00–17:00</span>
+        </div>
       </div>
+
+      <div class="container footer-bottom">
+        <span class="muted small">© <span data-year></span> NMD Advisory. All rights reserved.</span>
+        <span class="muted small">Privacy / POPIA (placeholder)</span>
+      </div>
+    </div>
   </footer>
 
   <a class="fab" href="#" data-whatsapp-link aria-label="Chat on WhatsApp (placeholder)">
-      <span class="fab-dot" aria-hidden="true"></span>
-      WhatsApp
+    <span class="fab-dot" aria-hidden="true"></span>
+    WhatsApp
   </a>
 
 </body>
+
 </html>

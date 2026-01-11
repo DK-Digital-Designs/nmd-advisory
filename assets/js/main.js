@@ -68,43 +68,37 @@
     }
   });
 
-  // WhatsApp placeholder (no alerts)
-  const whatsappTargets = document.querySelectorAll("[data-whatsapp-link]");
-  whatsappTargets.forEach(a => {
-    a.addEventListener("click", (e) => {
-      e.preventDefault();
-      showGlobalToast("WhatsApp integration will be enabled during implementation.");
-    });
-  });
+  // WhatsApp is now fully configured below (wireWhatsAppLinks function)
+  // No placeholder toast needed - links work directly
 })();
 
 const heroBg = document.querySelector(".hero-bg");
 
 if (heroBg) {
-    document.addEventListener("mousemove", (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 12;
-        const y = (e.clientY / window.innerHeight - 0.5) * 12;
+  document.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 12;
+    const y = (e.clientY / window.innerHeight - 0.5) * 12;
 
-        heroBg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
-    });
+    heroBg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
+  });
 }
 
 // WhatsApp link wiring
 (function wireWhatsAppLinks() {
-    // Use international format without +, spaces, or leading zeros.
-    // Example: South Africa +27 82 123 4567 -> "27821234567"
-    const WHATSAPP_NUMBER = "27821234567";
+  // Use international format without +, spaces, or leading zeros.
+  // Example: South Africa +27 82 123 4567 -> "27821234567"
+  const WHATSAPP_NUMBER = "27823739907";
 
-    // Optional default message
-    const DEFAULT_MESSAGE =
-        "Hi NMD Advisory, I’d like to enquire about your services. Please contact me.";
+  // Optional default message
+  const DEFAULT_MESSAGE =
+    "Hi NMD Advisory, I’d like to enquire about your services. Please contact me.";
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;
 
-    document.querySelectorAll("[data-whatsapp-link]").forEach((a) => {
-        a.href = url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-    });
+  document.querySelectorAll("[data-whatsapp-link]").forEach((a) => {
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+  });
 })();
 
