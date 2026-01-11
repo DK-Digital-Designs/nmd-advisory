@@ -88,3 +88,23 @@ if (heroBg) {
         heroBg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
     });
 }
+
+// WhatsApp link wiring
+(function wireWhatsAppLinks() {
+    // Use international format without +, spaces, or leading zeros.
+    // Example: South Africa +27 82 123 4567 -> "27821234567"
+    const WHATSAPP_NUMBER = "27821234567";
+
+    // Optional default message
+    const DEFAULT_MESSAGE =
+        "Hi NMD Advisory, I’d like to enquire about your services. Please contact me.";
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;
+
+    document.querySelectorAll("[data-whatsapp-link]").forEach((a) => {
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+    });
+})();
+
