@@ -12,7 +12,7 @@
   const btnCancel = document.querySelector("[data-cancel]");
 
   /** @returns {Booking[]} */
-  function loadBookings(){
+  function loadBookings() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return [];
@@ -25,21 +25,21 @@
   }
 
   /** @param {Booking[]} list */
-  function saveBookings(list){
+  function saveBookings(list) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
   }
 
-  function makeRef(){
+  function makeRef() {
     // NMD-XXXXXX
     const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     let s = "";
-    for (let i = 0; i < 6; i++){
+    for (let i = 0; i < 6; i++) {
       s += chars[Math.floor(Math.random() * chars.length)];
     }
     return `NMD-${s}`;
   }
 
-  function showToast(el, msg){
+  function showToast(el, msg) {
     if (!el) return;
     el.textContent = msg;
     el.hidden = false;
@@ -74,12 +74,12 @@
       saveBookings(list);
 
       bookingForm.reset();
-      showToast(bookingToast, `Reserved. Reference: ${ref}. Use this to cancel or reschedule.`);
+      showToast(bookingToast, `Request received. Reference: ${ref}. We will confirm shortly.`);
     });
   }
 
   // Manage booking (demo)
-  function findBooking(ref){
+  function findBooking(ref) {
     const list = loadBookings();
     const idx = list.findIndex(b => b.ref.toUpperCase() === ref.toUpperCase());
     if (idx === -1) return { list, idx, booking: null };
