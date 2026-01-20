@@ -10,8 +10,8 @@
 
   <link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="../assets/css/styles.css" />
-  <script defer src="../assets/js/main.js"></script>
-  <script defer src="../assets/js/admin.js"></script>
+  <script type="module" src="../assets/js/main.js"></script>
+  <script type="module" src="../assets/js/admin.js"></script>
 
 </head>
 
@@ -68,10 +68,14 @@
 
         <form class="form" data-admin-login-form>
           <label>
-            Passcode
-            <input type="password" name="password" placeholder="Enter passcode" required />
+            Email address
+            <input type="email" name="email" placeholder="staff@nmdadvisory.co.za" required />
           </label>
-          <button class="btn btn-primary btn-block" type="submit">Enter dashboard</button>
+          <label>
+            Password
+            <input type="password" name="password" placeholder="Enter password" required />
+          </label>
+          <button class="btn btn-primary btn-block" type="submit">Sign in to dashboard</button>
         </form>
 
         <div class="toast" data-admin-toast aria-live="polite" hidden></div>
@@ -106,8 +110,8 @@
 
           <div class="stat">
             <div class="stat-label">Enquiries</div>
-            <div class="stat-value">Quote</div>
-            <div class="muted small">Connect form → dashboard during implementation</div>
+            <div class="stat-value" data-stat-enquiries>0</div>
+            <div class="muted small">Live contact leads</div>
           </div>
         </div>
 

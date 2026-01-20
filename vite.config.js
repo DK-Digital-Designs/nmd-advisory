@@ -6,6 +6,7 @@ export default defineConfig(({ command }) => ({
     base: command === "serve" ? "/" : "/nmd-advisory/",
     root: "src",
     publicDir: "../public",
+    envDir: "../",
     build: {
         outDir: "../dist",
         emptyOutDir: true,
