@@ -18,10 +18,55 @@ import { supabase } from '../../lib/supabase.js';
   const toggleBtn = document.querySelector("[data-nav-toggle]");
   const mobileNav = document.querySelector("[data-mobile-nav]");
   if (toggleBtn && mobileNav) {
+    const navLinks = mobileNav.querySelectorAll("a");
+    const firstLink = navLinks[0];
+
+    const setMenuState = (isOpen) => {
+      toggleBtn.setAttribute("aria-expanded", String(isOpen));
+      toggleBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      mobileNav.hidden = !isOpen;
+    };
+
+    const openMenu = () => {
+      setMenuState(true);
+      if (firstLink) {
+        firstLink.focus();
+      }
+    };
+
+    const closeMenu = () => {
+      setMenuState(false);
+      toggleBtn.focus();
+    };
+
+    toggleBtn.setAttribute("aria-label", "Open menu");
+
     toggleBtn.addEventListener("click", () => {
       const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
-      toggleBtn.setAttribute("aria-expanded", String(!isOpen));
-      mobileNav.hidden = isOpen;
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    mobileNav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (mobileNav.hidden) return;
+      if (!mobileNav.contains(event.target) && !toggleBtn.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !mobileNav.hidden) {
+        closeMenu();
+      }
     });
   }
 
