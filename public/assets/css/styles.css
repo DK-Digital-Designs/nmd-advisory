@@ -275,8 +275,9 @@ img {
 }
 
 .brand-mark {
-  width: 34px;
-  height: 34px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
 }
 
 .brand-name {
@@ -438,8 +439,9 @@ img {
 }
 
 .footer-brand img {
-  width: 34px;
-  height: 34px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
 }
 
 .footer-name {
