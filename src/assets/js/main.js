@@ -55,11 +55,24 @@ import { supabase } from '../../lib/supabase.js';
       const fd = new FormData(contactForm);
       const name = String(fd.get("name") || "").trim();
       const email = String(fd.get("email") || "").trim();
+      const phone = String(fd.get("phone") || "").trim();
+      const service = String(fd.get("service") || "").trim();
       const message = String(fd.get("message") || "").trim();
+      const whatsappOptIn = fd.get("whatsapp_opt_in") === "yes";
+      const meetingOptions = fd.get("meeting_options") === "yes";
 
       const { error } = await supabase
         .from('enquiries')
-        .insert([{ name, email, message, status: 'unread' }]);
+        .insert([{
+          name,
+          email,
+          phone,
+          service,
+          message,
+          whatsapp_opt_in: whatsappOptIn,
+          meeting_options: meetingOptions,
+          status: 'unread',
+        }]);
 
       if (error) {
         alert("Error sending message: " + error.message);
