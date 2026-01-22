@@ -854,6 +854,13 @@ img {
   color: var(--navy);
 }
 
+.hero-slogan {
+  font-style: italic;
+  color: var(--gold);
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+
 .lead {
   font-size: 1.05rem;
   max-width: 60ch;
