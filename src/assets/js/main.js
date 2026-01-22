@@ -79,11 +79,31 @@ import { supabase } from '../../lib/supabase.js';
   // Hero Background Parallax
   const heroBg = document.querySelector(".hero-bg");
   if (heroBg) {
-    document.addEventListener("mousemove", (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 12;
-      const y = (e.clientY / window.innerHeight - 0.5) * 12;
-      heroBg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
-    });
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const setStaticHeroBg = () => {
+      heroBg.style.transform = "scale(1.05) translate(0px, 0px)";
+    };
+
+    if (prefersReducedMotion.matches) {
+      setStaticHeroBg();
+    } else {
+      let pendingFrame = false;
+      let nextTransform = "scale(1.05) translate(0px, 0px)";
+      const updateHeroBg = () => {
+        heroBg.style.transform = nextTransform;
+        pendingFrame = false;
+      };
+
+      document.addEventListener("mousemove", (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 12;
+        const y = (e.clientY / window.innerHeight - 0.5) * 12;
+        nextTransform = `scale(1.05) translate(${x}px, ${y}px)`;
+        if (!pendingFrame) {
+          pendingFrame = true;
+          requestAnimationFrame(updateHeroBg);
+        }
+      });
+    }
   }
 
   // WhatsApp link wiring
