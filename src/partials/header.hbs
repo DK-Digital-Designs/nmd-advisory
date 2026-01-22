@@ -1,21 +1,25 @@
 <header class="site-header" data-elevate>
     <div class="container header-inner">
-        <a class="brand" href="./index.html" aria-label="NMD Advisory home">
-            <img class="brand-mark" src="./assets/images/logo.jpeg" alt="" style="border-radius: 4px;" />
+        <a class="brand" href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}index.html" aria-label="NMD Advisory home">
+            <img class="brand-mark"
+                src="{{#if logoSrc}}{{logoSrc}}{{else}}{{#if basePath}}{{basePath}}{{else}}./{{/if}}assets/images/logo.jpeg{{/if}}"
+                alt="" style="border-radius: 4px;" />
             <span class="brand-name">NMD Advisory</span>
         </a>
 
         <nav class="nav" aria-label="Primary">
-            <a href="./services.html">Services</a>
-            <a href="./booking.html">Schedule</a>
-            <a href="./testimonials.html">Testimonials</a>
-            <a href="./contact.html">Contact</a>
-            <a class="nav-admin" href="./admin/index.html" title="Staff dashboard">Staff</a>
+            <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}services.html">Services</a>
+            <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}booking.html">Schedule</a>
+            <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}testimonials.html">Testimonials</a>
+            <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}contact.html">Contact</a>
+            <a class="nav-admin" href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}admin/index.html"
+                title="Staff dashboard">Staff</a>
         </nav>
 
         <div class="header-cta">
-            <a class="btn btn-ghost" href="./contact.html">Get in touch</a>
-            <a class="btn btn-primary" href="./booking.html">Schedule a meeting</a>
+            <a class="btn btn-ghost" href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}contact.html">Get in touch</a>
+            <a class="btn btn-primary" href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}booking.html">Schedule a
+                meeting</a>
         </div>
 
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
@@ -24,10 +28,10 @@
     </div>
 
     <div class="mobile-nav" data-mobile-nav hidden>
-        <a href="./services.html">Services</a>
-        <a href="./booking.html">Schedule</a>
-        <a href="./testimonials.html">Testimonials</a>
-        <a href="./contact.html">Contact</a>
-        <a href="./admin/index.html">Staff</a>
+        <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}services.html">Services</a>
+        <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}booking.html">Schedule</a>
+        <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}testimonials.html">Testimonials</a>
+        <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}contact.html">Contact</a>
+        <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}admin/index.html">Staff</a>
     </div>
 </header>

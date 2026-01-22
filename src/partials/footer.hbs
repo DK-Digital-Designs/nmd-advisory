@@ -3,7 +3,7 @@
         <div>
             <div>
                 <div class="footer-brand">
-                    <img src="./assets/images/logo.svg" alt="" />
+                    <img src="{{#if basePath}}{{basePath}}{{else}}./{{/if}}assets/images/logo.svg" alt="" />
                     <div>
                         <div class="footer-name">NMD Advisory</div>
                         <div class="muted">Accounting • Tax • IT • Business Solutions</div>
@@ -16,16 +16,16 @@
 
             <div>
                 <div class="footer-title">Pages</div>
-                <a href="./services.html">Services</a>
-                <a href="./booking.html">Schedule</a>
-                <a href="./testimonials.html">Testimonials</a>
-                <a href="./contact.html">Contact</a>
-                <a href="./admin/index.html">Staff</a>
+                <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}services.html">Services</a>
+                <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}booking.html">Schedule</a>
+                <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}testimonials.html">Testimonials</a>
+                <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}contact.html">Contact</a>
+                <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}admin/index.html">Staff</a>
             </div>
 
             <div>
                 <div class="footer-title">Contact</div>
-                <a href="./contact.html#lead-form">Enquiry form</a>
+                <a href="{{#if basePath}}{{basePath}}{{else}}./{{/if}}contact.html#lead-form">Enquiry form</a>
                 <a href="#" data-whatsapp-link>WhatsApp</a>
                 <a href="mailto:hello@nmdadvisory.co.za">hello@nmdadvisory.co.za</a>
                 <span class="muted small">Mon–Fri • 08:00–17:00</span>
@@ -39,8 +39,8 @@
     </div>
 </footer>
 
-<a class="fab" href="#" data-whatsapp-link aria-label="Chat on WhatsApp">
+<a class="fab" href="#" data-whatsapp-link
+    aria-label="{{#if fabLabel}}{{fabLabel}}{{else}}Chat on WhatsApp{{/if}}">
     <span class="fab-dot" aria-hidden="true"></span>
     WhatsApp
 </a>
-
