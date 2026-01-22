@@ -5,6 +5,12 @@ import { supabase } from '../../lib/supabase.js';
   const loginForm = document.querySelector("[data-admin-login-form]");
   const adminShell = document.querySelector("[data-admin-shell]");
   const toast = document.querySelector("[data-admin-toast]");
+  const btnLock = document.querySelector("[data-admin-lock]");
+  const btnOpenBookingPage = document.querySelector("[data-open-booking-page]");
+  const statBookings = document.querySelector("[data-stat-bookings]");
+  const statTestimonials = document.querySelector("[data-stat-testimonials]");
+  const bookingsTable = document.querySelector("[data-bookings-table]");
+  const testimonialList = document.querySelector("[data-testimonial-list]");
 
   // UI state
   function showToast(msg) {
@@ -36,9 +42,6 @@ import { supabase } from '../../lib/supabase.js';
     if (adminShell) adminShell.hidden = true;
   }
 
-  // Initial check
-  checkSession();
-
   // 🔐 SUPABASE LOGIN
   if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
@@ -62,7 +65,6 @@ import { supabase } from '../../lib/supabase.js';
     });
   }
 
-  const btnLock = document.querySelector("[data-admin-lock]");
   if (btnLock) {
     btnLock.addEventListener("click", async () => {
       await supabase.auth.signOut();
@@ -75,6 +77,9 @@ import { supabase } from '../../lib/supabase.js';
       window.location.href = "../booking.html";
     });
   }
+
+  // Initial check
+  checkSession();
 
   async function renderBookings() {
     const { data: bookings, error } = await supabase
@@ -140,11 +145,5 @@ import { supabase } from '../../lib/supabase.js';
     if (!testimonialList) return;
     testimonialList.innerHTML = `<div class="panel muted">Dashboard connected to live database.</div>`;
   }
-
-  const btnOpenBookingPage = document.querySelector("[data-open-booking-page]");
-  const statBookings = document.querySelector("[data-stat-bookings]");
-  const statTestimonials = document.querySelector("[data-stat-testimonials]");
-  const bookingsTable = document.querySelector("[data-bookings-table]");
-  const testimonialList = document.querySelector("[data-testimonial-list]");
 
 })();
