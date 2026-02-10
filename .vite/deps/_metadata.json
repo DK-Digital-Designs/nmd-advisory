@@ -1,0 +1,15 @@
+{
+  "hash": "5f4ed238",
+  "configHash": "1e60403e",
+  "lockfileHash": "3766c37c",
+  "browserHash": "6c26efda",
+  "optimized": {
+    "@supabase/supabase-js": {
+      "src": "../../node_modules/@supabase/supabase-js/dist/index.mjs",
+      "file": "@supabase_supabase-js.js",
+      "fileHash": "90cf89bc",
+      "needsInterop": false
+    }
+  },
+  "chunks": {}
+}

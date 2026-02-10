@@ -1,32 +1,14 @@
 {
-  "name": "nmd-advisory-demo",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "nmd-advisory",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "npm run build && gh-pages -d dist -b gh-pages"
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DK-Digital-Designs/nmd-advisory.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DK-Digital-Designs/nmd-advisory/issues"
-  },
-  "homepage": "https://github.com/DK-Digital-Designs/nmd-advisory#readme",
-  "description": "",
   "devDependencies": {
-    "gh-pages": "^6.3.0",
-    "vite": "^7.3.0",
-    "vite-plugin-handlebars": "^2.0.0"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.91.0"
+    "vite": "^7.3.1"
   }
 }
