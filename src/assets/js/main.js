@@ -1,100 +1,279 @@
-import { supabase } from '../../lib/supabase.js';
+/**
+ * Main JavaScript Module
+ * 
+ * Handles mobile navigation, form validation, and smooth scrolling.
+ * No external dependencies - vanilla JavaScript only.
+ */
 
-(() => {
-  const year = document.querySelector("[data-year]");
-  if (year) year.textContent = String(new Date().getFullYear());
+/* ===== MOBILE NAVIGATION ===== */
+/**
+ * Toggles mobile navigation menu visibility
+ */
+function initMobileNav() {
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
 
-  // Header elevate on scroll
-  const header = document.querySelector("[data-elevate]");
-  if (header) {
-    const onScroll = () => {
-      header.classList.toggle("is-elevated", window.scrollY > 4);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-  }
+  if (!menuToggle || !mobileNav) return;
 
-  // Mobile nav toggle
-  const toggleBtn = document.querySelector("[data-nav-toggle]");
-  const mobileNav = document.querySelector("[data-mobile-nav]");
-  if (toggleBtn && mobileNav) {
-    toggleBtn.addEventListener("click", () => {
-      const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
-      toggleBtn.setAttribute("aria-expanded", String(!isOpen));
-      mobileNav.hidden = isOpen;
-    });
-  }
+  menuToggle.addEventListener('click', () => {
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
 
-  // Active nav state
-  const currentPath = window.location.pathname;
-  const navLinks = document.querySelectorAll('.nav a, .mobile-nav a');
-  navLinks.forEach(link => {
-    const url = new URL(link.href);
-    const linkPath = url.pathname;
+    // Toggle aria-expanded attribute for accessibility
+    menuToggle.setAttribute('aria-expanded', !isExpanded);
 
-    if (currentPath === linkPath || (linkPath.endsWith('/') && currentPath.endsWith('index.html'))) {
-      link.classList.add('active');
-    } else if (currentPath.endsWith('/') && linkPath.endsWith('index.html')) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    // Toggle active class to show/hide menu
+    mobileNav.classList.toggle('active');
   });
 
-  // Contact Form Handler (Supabase)
-  const contactForm = document.querySelector("#lead-form form");
-  if (contactForm) {
-    contactForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  // Close mobile menu when clicking a link
+  const mobileNavLinks = mobileNav.querySelectorAll('.nav-link');
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      mobileNav.classList.remove('active');
+    });
+  });
+}
 
-      const btn = contactForm.querySelector('button[type="submit"]');
-      const originalText = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = "Sending...";
+/* ===== FORM VALIDATION ===== */
+/**
+ * Validates email format using standard regex
+ * @param {string} email - Email address to validate
+ * @returns {boolean} - True if valid email format
+ */
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 
-      const fd = new FormData(contactForm);
-      const name = String(fd.get("name") || "").trim();
-      const email = String(fd.get("email") || "").trim();
-      const message = String(fd.get("message") || "").trim();
+/**
+ * Displays error message for a form field
+ * @param {HTMLElement} field - Input field element
+ * @param {string} message - Error message to display
+ */
+function showError(field, message) {
+  const formGroup = field.closest('.form-group');
+  const errorMessage = formGroup.querySelector('.error-message');
 
-      const { error } = await supabase
-        .from('enquiries')
-        .insert([{ name, email, message, status: 'unread' }]);
+  formGroup.classList.add('form-group-error');
+  errorMessage.textContent = message;
+  field.setAttribute('aria-invalid', 'true');
+}
 
-      if (error) {
-        alert("Error sending message: " + error.message);
-        btn.disabled = false;
-        btn.textContent = originalText;
-      } else {
-        contactForm.reset();
-        btn.textContent = "Message sent!";
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.textContent = originalText;
-        }, 3000);
+/**
+ * Clears error message for a form field
+ * @param {HTMLElement} field - Input field element
+ */
+function clearError(field) {
+  const formGroup = field.closest('.form-group');
+  const errorMessage = formGroup.querySelector('.error-message');
+
+  formGroup.classList.remove('form-group-error');
+  errorMessage.textContent = '';
+  field.setAttribute('aria-invalid', 'false');
+}
+
+/**
+ * Validates a single form field based on its type and requirements
+ * @param {HTMLElement} field - Input field to validate
+ * @returns {boolean} - True if field is valid
+ */
+function validateField(field) {
+  const value = field.value.trim();
+  const isRequired = field.hasAttribute('required');
+
+  // Clear previous errors
+  clearError(field);
+
+  // Check if required field is empty
+  if (isRequired && !value) {
+    showError(field, 'This field is required');
+    return false;
+  }
+
+  // Email validation
+  if (field.type === 'email' && value && !isValidEmail(value)) {
+    showError(field, 'Please enter a valid email address');
+    return false;
+  }
+
+  // Checkbox validation (for privacy consent)
+  if (field.type === 'checkbox' && isRequired && !field.checked) {
+    showError(field, 'You must agree to the privacy policy to continue');
+    return false;
+  }
+
+  // Select validation
+  if (field.tagName === 'SELECT' && isRequired && !value) {
+    showError(field, 'Please select an option');
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * Initializes form validation for the enquiry form
+ */
+function initFormValidation() {
+  const form = document.getElementById('enquiryForm');
+  if (!form) return;
+
+  // Validate on blur (when field loses focus)
+  const fields = form.querySelectorAll('input, textarea, select');
+  fields.forEach(field => {
+    field.addEventListener('blur', () => {
+      validateField(field);
+    });
+
+    // Clear error on input
+    field.addEventListener('input', () => {
+      if (field.closest('.form-group').classList.contains('form-group-error')) {
+        clearError(field);
       }
     });
-  }
-
-  // Hero Background Parallax
-  const heroBg = document.querySelector(".hero-bg");
-  if (heroBg) {
-    document.addEventListener("mousemove", (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 12;
-      const y = (e.clientY / window.innerHeight - 0.5) * 12;
-      heroBg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
-    });
-  }
-
-  // WhatsApp link wiring
-  const WHATSAPP_NUMBER = "27823739907";
-  const DEFAULT_MESSAGE = "Hi NMD Advisory, I’d like to enquire about your services. Please contact me.";
-  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;
-
-  document.querySelectorAll("[data-whatsapp-link]").forEach((a) => {
-    a.href = waUrl;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
   });
 
-})();
+  // Form submission
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validate all fields
+    let isValid = true;
+    fields.forEach(field => {
+      if (!validateField(field)) {
+        isValid = false;
+      }
+    });
+
+    if (!isValid) {
+      // Focus on first error field
+      const firstError = form.querySelector('.form-group-error input, .form-group-error textarea, .form-group-error select');
+      if (firstError) {
+        firstError.focus();
+      }
+      return;
+    }
+
+    // If valid, handle form submission (placeholder - no backend in this demo)
+    handleFormSubmission(form);
+  });
+}
+
+/**
+ * Handles form submission - placeholder for actual backend integration
+ * @param {HTMLFormElement} form - Form element to submit
+ */
+async function handleFormSubmission(form) {
+  const submitButton = form.querySelector('button[type="submit"]');
+  const formFeedback = document.getElementById('formFeedback');
+
+  // Disable submit button
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending...';
+
+  // Simulate API call (replace with actual backend integration)
+  // In production, this would POST to your email service or CRM
+  setTimeout(() => {
+    // Get form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    // Log form data for demonstration (remove in production)
+    console.log('Form Data:', data);
+
+    // Show success message
+    formFeedback.style.display = 'block';
+    formFeedback.className = 'card';
+    formFeedback.style.background = 'var(--success-light)';
+    formFeedback.style.borderLeft = '4px solid var(--success)';
+    formFeedback.style.padding = 'var(--space-4)';
+    formFeedback.innerHTML = `
+      <h3 style="color: var(--success); margin-bottom: var(--space-2);">Enquiry sent successfully.</h3>
+      <p>Thank you for contacting NMD Advisory. We've received your enquiry and will respond within 24-48 hours.</p>
+      <p style="margin-top: var(--space-3); font-size: var(--text-sm); color: var(--color-text-muted);">
+        <strong>Note:</strong> This is a demo. In production, this form would send your message via email or to a CRM system.
+      </p>
+    `;
+
+    // Reset form
+    form.reset();
+
+    // Re-enable submit button
+    submitButton.disabled = false;
+    submitButton.textContent = 'Send Enquiry';
+
+    // Scroll to feedback
+    formFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 1500);
+}
+
+/* ===== SMOOTH SCROLL ===== */
+/**
+ * Enables smooth scrolling for anchor links
+ */
+function initSmoothScroll() {
+  // Get all anchor links that point to sections on the same page
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+  anchorLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+
+      // Ignore # links without targets
+      if (href === '#' || !href) return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+
+      // Smooth scroll to target
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+      // Update URL without page jump
+      history.pushState(null, null, href);
+
+      // Focus on target for accessibility (skip links)
+      if (link.classList.contains('skip-link')) {
+        target.focus();
+      }
+    });
+  });
+}
+
+/* ===== ACTIVE NAV HIGHLIGHTING ===== */
+/**
+ * Highlights the active navigation link based on current page
+ */
+function highlightActiveNav() {
+  const currentPath = window.location.pathname;
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  navLinks.forEach(link => {
+    const linkPath = new URL(link.href).pathname;
+
+    // Check if link matches current page
+    if (linkPath === currentPath ||
+      (currentPath.includes(linkPath) && linkPath !== '/')) {
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+}
+
+/* ===== INITIALIZATION ===== */
+/**
+ * Initialize all modules when DOM is ready
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileNav();
+  initFormValidation();
+  initSmoothScroll();
+  highlightActiveNav();
+
+  console.log('NMD Advisory website initialized');
+});

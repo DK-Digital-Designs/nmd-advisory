@@ -1,33 +1,36 @@
-<header class="site-header" data-elevate>
-    <div class="container header-inner">
-        <a class="brand" href="./index.html" aria-label="NMD Advisory home">
-            <img class="brand-mark" src="./assets/images/1.svg" alt="" style="border-radius: 4px;" />
-            <span class="brand-name">NMD Advisory</span>
-        </a>
+<header class="header" role="banner">
+    <div class="container">
+        <div class="header-inner">
+            <!-- Logo -->
+            <a href="./index.html" class="logo" aria-label="NMD Advisory Home">
+                <img src="/assets/images/logo-1.svg" alt="" class="logo-image" aria-hidden="true">
+                <span>NMD Advisory</span>
+            </a>
 
-        <nav class="nav" aria-label="Primary">
-            <a href="./services.html">Services</a>
-            <a href="./booking.html">Schedule</a>
-            <a href="./testimonials.html">Testimonials</a>
-            <a href="./contact.html">Contact</a>
-            <a class="nav-admin" href="./admin/index.html" title="Staff dashboard">Staff</a>
-        </nav>
+            <!-- Desktop Navigation -->
+            <nav class="nav" role="navigation" aria-label="Main navigation">
+                <a href="./index.html" class="nav-link">Home</a>
+                <a href="./services.html" class="nav-link">Services</a>
+                <a href="./about.html" class="nav-link">About</a>
+                <a href="./contact.html" class="nav-link">Contact</a>
+                <a href="./contact.html" class="btn btn-primary btn-sm">Get Started</a>
+            </nav>
 
-        <div class="header-cta">
-            <a class="btn btn-ghost" href="./contact.html">Get in touch</a>
-            <a class="btn btn-primary" href="./booking.html">Schedule a meeting</a>
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
 
-        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-
-    <div class="mobile-nav" data-mobile-nav hidden>
-        <a href="./services.html">Services</a>
-        <a href="./booking.html">Schedule</a>
-        <a href="./testimonials.html">Testimonials</a>
-        <a href="./contact.html">Contact</a>
-        <a href="./admin/index.html">Staff</a>
+        <!-- Mobile Navigation -->
+        <nav class="nav-mobile" id="mobileNav" role="navigation" aria-label="Mobile navigation">
+            <a href="./index.html" class="nav-link">Home</a>
+            <a href="./services.html" class="nav-link">Services</a>
+            <a href="./about.html" class="nav-link">About</a>
+            <a href="./contact.html" class="nav-link">Contact</a>
+            <a href="./contact.html" class="btn btn-primary btn-block">Get Started</a>
+        </nav>
     </div>
 </header>

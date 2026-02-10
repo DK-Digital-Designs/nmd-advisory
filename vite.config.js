@@ -2,8 +2,9 @@ import { defineConfig } from "vite";
 import handlebars from "vite-plugin-handlebars";
 import { resolve } from "path";
 
-export default defineConfig(({ command }) => ({
-    base: command === "serve" ? "/" : "/nmd-advisory/",
+export default defineConfig({
+    // Base path - '/' for Vercel deployment
+    base: "/",
     root: "src",
     publicDir: "../public",
     envDir: "../",
@@ -14,12 +15,11 @@ export default defineConfig(({ command }) => ({
             input: {
                 main: resolve(__dirname, "src/index.html"),
                 services: resolve(__dirname, "src/services.html"),
-                booking: resolve(__dirname, "src/booking.html"),
-                testimonials: resolve(__dirname, "src/testimonials.html"),
+                about: resolve(__dirname, "src/about.html"),
                 contact: resolve(__dirname, "src/contact.html"),
-
-                // add this:
-                admin: resolve(__dirname, "src/admin/index.html"),
+                privacy: resolve(__dirname, "src/privacy.html"),
+                terms: resolve(__dirname, "src/terms.html"),
+                cookies: resolve(__dirname, "src/cookies.html"),
             },
         },
     },
@@ -28,4 +28,4 @@ export default defineConfig(({ command }) => ({
             partialDirectory: resolve(__dirname, "src/partials"),
         }),
     ],
-}));
+});

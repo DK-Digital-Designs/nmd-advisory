@@ -1,0 +1,525 @@
+/**
+ * Layout System
+ * 
+ * Provides container, grid, and section patterns using CSS Grid and Flexbox.
+ * Mobile-first approach ensures layouts scale cleanly from phone to desktop.
+ */
+
+/* ===== CONTAINER SYSTEM ===== */
+/* Centered content with max-width and padding */
+.container {
+    width: 100%;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+}
+
+.container-sm {
+    max-width: var(--container-sm);
+}
+
+.container-md {
+    max-width: var(--container-md);
+}
+
+.container-lg {
+    max-width: var(--container-lg);
+}
+
+/* ===== SECTION PATTERNS ===== */
+/* Vertical spacing for page sections */
+.section {
+    padding: var(--space-16) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: var(--space-24) 0;
+    }
+}
+
+/* Alternate section backgrounds */
+.section-alt {
+    background: linear-gradient(180deg, var(--surface-secondary) 0%, #f0f3f7 100%);
+    border-top: 1px solid var(--color-border-light);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.section-dark {
+    background: var(--surface-dark);
+    color: var(--color-text-on-dark);
+}
+
+/* Page hero (non-home) */
+.page-hero {
+    position: relative;
+    padding: var(--space-16) 0 var(--space-10);
+    background: radial-gradient(circle at 15% -20%, rgba(212, 160, 76, 0.25), transparent 55%),
+        linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 60%, #162b45 100%);
+    color: var(--color-text-on-dark);
+    overflow: hidden;
+}
+
+.page-hero::after {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: -30%;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.14), transparent 60%);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.page-hero .lead {
+    color: var(--gray-200);
+}
+
+@media (min-width: 768px) {
+    .page-hero {
+        padding: var(--space-20) 0 var(--space-12);
+    }
+}
+
+/* Section header - centered header with optional subtitle */
+.section-head {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--space-12);
+}
+
+.section-head h2 {
+    margin-bottom: var(--space-4);
+}
+
+.section-head .muted {
+    font-size: var(--text-lg);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.section-head-dark h2,
+.section-head-dark p {
+    color: var(--color-text-on-dark);
+}
+
+.section-head-dark .muted {
+    color: var(--gray-300);
+}
+
+.content-narrow {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.content-compact {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-footer {
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-border-light);
+}
+
+.cluster-center {
+    justify-content: center;
+}
+
+/* ===== GRID SYSTEMS ===== */
+/* Responsive grid using CSS Grid with mobile-first breakpoints */
+
+/* Two-column grid */
+.grid-2 {
+    display: grid;
+    gap: var(--space-8);
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-12);
+    }
+}
+
+/* Three-column grid */
+.grid-3 {
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+    }
+}
+
+/* Four-column grid */
+.grid-4 {
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ===== FLEX LAYOUTS ===== */
+/* Split layout - two columns with flexbox */
+.split {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+    .split {
+        flex-direction: row;
+        gap: var(--space-12);
+    }
+
+    .split>* {
+        flex: 1;
+    }
+}
+
+/* Stack - vertical flex with consistent spacing */
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.stack-sm {
+    gap: var(--space-2);
+}
+
+.stack-lg {
+    gap: var(--space-8);
+}
+
+/* Cluster - horizontal flex with wrapping */
+.cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.cluster-sm {
+    gap: var(--space-2);
+}
+
+.cluster-lg {
+    gap: var(--space-6);
+}
+
+/* Center - centering content */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* ===== HERO LAYOUTS ===== */
+/* Hero section with grid layout */
+.hero {
+    position: relative;
+    padding: var(--space-24) 0 var(--space-20);
+    overflow: hidden;
+    background: linear-gradient(120deg, var(--navy-950) 0%, var(--navy-800) 55%, #162c46 100%);
+    color: var(--color-text-on-dark);
+}
+
+@media (min-width: 768px) {
+    .hero {
+        padding: var(--space-32) 0;
+    }
+}
+
+/* Hero background effect */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 18% 20%, rgba(212, 160, 76, 0.18) 0%, transparent 55%),
+        radial-gradient(circle at 80% -10%, rgba(255, 255, 255, 0.12) 0%, transparent 50%),
+        linear-gradient(120deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+
+/* Hero grid - two columns on desktop */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: 1.5fr 1fr;
+        gap: var(--space-16);
+        align-items: start;
+    }
+}
+
+/* Hero copy - text content area */
+.hero-copy h1 {
+    color: var(--color-text-on-dark);
+    margin-bottom: var(--space-6);
+}
+
+.hero-copy .lead {
+    color: var(--gray-200);
+    margin-bottom: var(--space-8);
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-copy {
+    animation: fade-up 0.8s ease both;
+}
+
+.hero-card {
+    animation: fade-up 0.95s ease both;
+    animation-delay: 0.12s;
+}
+
+.hero-trust {
+    animation: fade-up 1.05s ease both;
+    animation-delay: 0.2s;
+}
+
+/* Hero actions - button group */
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-bottom: var(--space-12);
+}
+
+/* Hero trust indicators */
+.hero-trust {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--space-6);
+    padding: var(--space-6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    background: rgba(7, 11, 18, 0.4);
+    backdrop-filter: blur(12px);
+}
+
+.trust-item {
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .trust-item {
+        text-align: left;
+    }
+}
+
+.trust-number {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    color: var(--gold-400);
+    margin-bottom: var(--space-1);
+}
+
+.trust-label {
+    font-size: var(--text-sm);
+    color: var(--gray-300);
+}
+
+/* ===== CTA SECTION ===== */
+/* Call-to-action with background and centered content */
+.cta {
+    padding: var(--space-16) 0;
+    background: radial-gradient(circle at 20% -30%, rgba(212, 160, 76, 0.2), transparent 55%),
+        linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
+    color: var(--color-text-on-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta::before {
+    content: '';
+    position: absolute;
+    left: -15%;
+    bottom: -40%;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.14), transparent 60%);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+@media (min-width: 768px) {
+    .cta {
+        padding: var(--space-20) 0;
+    }
+}
+
+.cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+    .cta-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.cta h2 {
+    color: var(--color-text-on-dark);
+    margin-bottom: var(--space-2);
+}
+
+.cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .cta-actions {
+        justify-content: flex-end;
+    }
+}
+
+/* ===== UTILITY LAYOUTS ===== */
+/* Divider */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(17, 19, 24, 0.2), transparent);
+    margin: var(--space-6) 0;
+}
+
+/* Spacer utilities */
+.mt-auto {
+    margin-top: auto;
+}
+
+.mb-auto {
+    margin-bottom: auto;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mt-4 {
+    margin-top: var(--space-4);
+}
+
+.mt-6 {
+    margin-top: var(--space-6);
+}
+
+.mt-8 {
+    margin-top: var(--space-8);
+}
+
+.mt-12 {
+    margin-top: var(--space-12);
+}
+
+.mb-4 {
+    margin-bottom: var(--space-4);
+}
+
+.mb-6 {
+    margin-bottom: var(--space-6);
+}
+
+.mb-8 {
+    margin-bottom: var(--space-8);
+}
+
+.mb-12 {
+    margin-bottom: var(--space-12);
+}
+
+.pt-8 {
+    padding-top: var(--space-8);
+}
+
+.pb-8 {
+    padding-bottom: var(--space-8);
+}
+
+/* Visibility utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .hidden-mobile {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .hidden-desktop {
+        display: none;
+    }
+}

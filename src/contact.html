@@ -2,138 +2,241 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contact — NMD Advisory</title>
-    <meta name="description" content="Contact NMD Advisory. Send an enquiry or schedule a Zoom/Teams meeting." />
-    <meta name="theme-color" content="#0b1b3a" />
+    <!-- Basic Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-    <script type="module" src="./assets/js/main.js"></script>
+    <!-- SEO Meta Tags -->
+    <title>Contact Us — Get Your Custom Quote | NMD Advisory</title>
+    <meta name="description"
+        content="Get in touch with NMD Advisory for a custom quote on Accounting, Tax, IT, or Business Advisory services. We respond to all enquiries within 24-48 hours. Email us today to start the conversation.">
+    <meta name="keywords"
+        content="contact nmd advisory, get quote, business enquiry, accounting quote, tax advisory contact, it consulting contact">
+
+    <!-- OpenGraph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nmd-advisory.com/contact.html">
+    <meta property="og:title" content="Contact NMD Advisory">
+    <meta property="og:description" content="Get in touch for a custom quote. We respond within 24-48 hours.">
+    <meta property="og:image" content="https://nmd-advisory.com/assets/images/og-image.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact NMD Advisory">
+    <meta name="twitter:description" content="Get in touch for a custom quote. We respond within 24-48 hours.">
+
+    <!-- Other Meta -->
+    <meta name="theme-color" content="#0b1b3a">
+    <link rel="icon" href="/assets/images/logo-1.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://nmd-advisory.com/contact.html">
+
+    <!-- Stylesheet and Scripts -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script type="module" src="./assets/js/main.js" defer></script>
 </head>
 
 <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <div class="proto-banner" role="note">Website preview. Content and integrations will be finalised during
-        implementation.</div>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
     {{> header}}
 
     <main id="main">
-        <section class="page-hero">
+        <!-- Page Header -->
+        <section class="section">
             <div class="container">
-                <div class="kicker">Contact</div>
-                <h1>Get in touch</h1>
-                <p class="lead muted">
-                    Send an enquiry or reserve a meeting slot. We aim to respond within 24–48 hours.
-                </p>
-                <div class="actions">
-                    <a class="btn btn-primary" href="./booking.html">Schedule Zoom / Teams</a>
-                    <a class="btn btn-ghost" href="#" data-whatsapp-link>WhatsApp</a>
+                <div class="section-head">
+                    <div class="kicker">Get in Touch</div>
+                    <h1>Contact Us</h1>
+                    <p class="lead">
+                        Send us an enquiry and we'll respond within 24–48 hours with a custom quote tailored to your
+                        business needs.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <section class="section">
-            <div class="container grid-2">
-                <section class="card-surface" id="lead-form">
-                    <h2>Enquiry form</h2>
-                    <p class="muted">This form can be connected to email/CRM and tracked in the staff dashboard.</p>
+        <!-- Contact Form Section -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="split">
+                    <!-- Contact Form -->
+                    <div>
+                        <div class="card">
+                            <h2 id="contact-form">Send Us an Enquiry</h2>
+                            <p class="muted">Fill out the form below and we'll get back to you within 24–48 hours.</p>
 
-                    <form class="form" action="#" method="post">
-                        <div class="form-row">
-                            <label>
-                                Full name
-                                <input type="text" name="name" placeholder="e.g., Jane Smith" required />
-                            </label>
+                            <form id="enquiryForm" class="stack" novalidate>
+                                <!-- Name Field -->
+                                <div class="form-group">
+                                    <label for="name" class="required">Full Name</label>
+                                    <input type="text" id="name" name="name" required aria-required="true"
+                                        placeholder="John Smith">
+                                    <span class="error-message" role="alert" aria-live="polite"></span>
+                                </div>
 
-                            <label>
-                                Email
-                                <input type="email" name="email" placeholder="e.g., jane@company.co.za" required />
-                            </label>
+                                <!-- Email Field -->
+                                <div class="form-group">
+                                    <label for="email" class="required">Email Address</label>
+                                    <input type="email" id="email" name="email" required aria-required="true"
+                                        placeholder="john@example.com">
+                                    <span class="error-message" role="alert" aria-live="polite"></span>
+                                    <span class="help-text">We'll use this email to send your quote and follow
+                                        up.</span>
+                                </div>
+
+                                <!-- Phone Field (Optional) -->
+                                <div class="form-group">
+                                    <label for="phone">Phone Number (Optional)</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+27 12 345 6789">
+                                    <span class="help-text">Optional, but helpful if we need to clarify details.</span>
+                                </div>
+
+                                <!-- Service Interest -->
+                                <div class="form-group">
+                                    <label for="service" class="required">Service Interest</label>
+                                    <select id="service" name="service" required aria-required="true">
+                                        <option value="">Please select a service...</option>
+                                        <option value="accounting">Accounting & Bookkeeping</option>
+                                        <option value="tax">Tax Compliance & Advisory</option>
+                                        <option value="it">IT Solutions & Security</option>
+                                        <option value="business">Business Solutions & Advisory</option>
+                                        <option value="multiple">Multiple Services</option>
+                                        <option value="other">Other / Not Sure</option>
+                                    </select>
+                                    <span class="error-message" role="alert" aria-live="polite"></span>
+                                </div>
+
+                                <!-- Message Field -->
+                                <div class="form-group">
+                                    <label for="message" class="required">Tell Us About Your Needs</label>
+                                    <textarea id="message" name="message" required aria-required="true"
+                                        placeholder="Please describe your business needs, challenges, or what services you're interested in. The more detail you provide, the better we can tailor our quote."
+                                        rows="6"></textarea>
+                                    <span class="error-message" role="alert" aria-live="polite"></span>
+                                </div>
+
+                                <!-- Privacy Consent -->
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="privacy" name="privacy" required
+                                            aria-required="true">
+                                        <span>I agree to the <a href="./privacy.html" target="_blank">Privacy Policy</a>
+                                            and consent to NMD Advisory contacting me via email regarding my
+                                            enquiry.</span>
+                                    </label>
+                                    <span class="error-message" role="alert" aria-live="polite"></span>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                    Send Enquiry
+                                </button>
+
+                                <!-- Success/Error Messages -->
+                                <div id="formFeedback" role="status" aria-live="polite" style="display: none;"></div>
+                            </form>
                         </div>
+                    </div>
 
-                        <div class="form-row">
-                            <label>
-                                Contact number (optional)
-                                <input type="tel" name="phone" placeholder="e.g., +27 82 123 4567" />
-                            </label>
+                    <!-- Contact Information -->
+                    <div>
+                        <div class="stack">
+                            <!-- Response Time -->
+                            <div class="panel">
+                                <h3>⏱️ Response Time</h3>
+                                <p class="muted">
+                                    We respond to all enquiries within <strong>24–48 hours</strong> during business
+                                    days. You'll receive either a detailed quote or a request for clarification if we
+                                    need more information.
+                                </p>
+                            </div>
 
-                            <label>
-                                Service area
-                                <select name="service" required>
-                                    <option value="" selected disabled>Select a service</option>
-                                    <option>Accounting</option>
-                                    <option>Tax</option>
-                                    <option>IT</option>
-                                    <option>Business Solutions</option>
-                                    <option>Not sure</option>
-                                </select>
-                            </label>
-                        </div>
+                            <!-- What Happens Next -->
+                            <div class="panel">
+                                <h3>📧 What Happens Next?</h3>
+                                <ol class="steps">
+                                    <li>
+                                        <div class="step-title">We Review Your Enquiry</div>
+                                        <div class="muted">Our team will carefully review your needs and prepare a
+                                            tailored response.</div>
+                                    </li>
+                                    <li>
+                                        <div class="step-title">You Receive Your Quote</div>
+                                        <div class="muted">We'll email you a detailed quote with deliverables,
+                                            timelines, and transparent pricing.</div>
+                                    </li>
+                                    <li>
+                                        <div class="step-title">We Start Working Together</div>
+                                        <div class="muted">Once you accept, we'll send an engagement agreement and begin
+                                            immediately.</div>
+                                    </li>
+                                </ol>
+                            </div>
 
-                        <label>
-                            Message
-                            <textarea name="message" rows="5" placeholder="Tell us what you need help with..."
-                                required></textarea>
-                        </label>
-
-                        <div class="form-row">
-                            <label class="checkbox">
-                                <input type="checkbox" />
-                                <span>Contact me on WhatsApp (optional)</span>
-                            </label>
-
-                            <label class="checkbox">
-                                <input type="checkbox" />
-                                <span>Send me meeting options (optional)</span>
-                            </label>
-                        </div>
-
-                        <button class="btn btn-primary btn-block" type="submit">Send enquiry</button>
-
-                        <p class="muted small">
-                            POPIA consent language and privacy policy wording can be added here once finalised.
-                        </p>
-                    </form>
-                </section>
-
-                <aside class="card-surface">
-                    <h2>Contact Information</h2>
-                    <p class="muted">We are available during standard business hours.</p>
-
-                    <div class="info-list">
-                        <div class="info-item">
-                            <div class="info-label">Email</div>
-                            <div class="info-value"><a href="mailto:hello@nmdadvisory.co.za">hello@nmdadvisory.co.za</a>
+                            <!-- Alternative Contact -->
+                            <div class="card">
+                                <h3>📬 Prefer Email?</h3>
+                                <p class="muted">
+                                    You can also reach us directly at:<br>
+                                    <a href="mailto:info@nmd-advisory.com" class="link">info@nmd-advisory.com</a>
+                                </p>
+                                <p class="muted" style="margin-top: var(--space-4);">
+                                    Please include the same information requested in the form above to help us provide
+                                    an accurate quote.
+                                </p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <div class="info-item">
-                            <div class="info-label">WhatsApp</div>
-                            <div class="info-value"><a href="#" data-whatsapp-link>Chat on WhatsApp</a></div>
-                        </div>
+        <!-- Office Information (if applicable) -->
+        <section class="section">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Office Information</h2>
+                </div>
 
-                        <div class="info-item">
-                            <div class="info-label">Hours</div>
-                            <div class="info-value">Mon–Fri • 08:00–17:00</div>
-                        </div>
-
-                        <div class="info-item">
-                            <div class="info-label">Location</div>
-                            <div class="info-value">Johannesburg, South Africa</div>
-                        </div>
+                <div class="grid-3">
+                    <div class="card" style="text-align: center;">
+                        <h3>🌍 Location</h3>
+                        <p class="muted">
+                            South Africa<br>
+                            <em>(Remote consultations available nationwide)</em>
+                        </p>
                     </div>
 
-                    <div class="divider"></div>
-
-                    <div class="panel">
-                        <h3>Prefer a scheduled call?</h3>
-                        <p class="muted small">Reserve a slot and we’ll confirm the details.</p>
-                        <a class="btn btn-ghost btn-block" href="./booking.html">Go to scheduling</a>
+                    <div class="card" style="text-align: center;">
+                        <h3>⏰ Business Hours</h3>
+                        <p class="muted">
+                            Monday – Friday<br>
+                            9:00 AM – 5:00 PM SAST
+                        </p>
                     </div>
-                </aside>
+
+                    <div class="card" style="text-align: center;">
+                        <h3>📧 Email</h3>
+                        <p class="muted">
+                            <a href="mailto:info@nmd-advisory.com" class="link">info@nmd-advisory.com</a><br>
+                            <em>24–48 hour response time</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <div class="container cta-inner">
+                <div>
+                    <h2>Have Questions?</h2>
+                    <p class="muted">Check out our services page or reach out directly—we're here to help.</p>
+                </div>
+                <div class="cta-actions">
+                    <a class="btn btn-primary btn-lg" href="#contact-form">Back to Form</a>
+                    <a class="btn btn-ghost-light btn-lg" href="./services.html">View Services</a>
+                </div>
             </div>
         </section>
     </main>
