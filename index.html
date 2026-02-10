@@ -4,11 +4,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NMD Advisory</title>
+  <title>NMD Advisory | Clarity. Compliance. Practicality.</title>
+  <meta name="description"
+    content="NMD Advisory provides accounting, tax, IT, and business solutions to small and medium-sized businesses. Clarity, compliance, and practical outcomes.">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+    rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-  <div id="app"></div>
+  <nav class="glass-nav">
+    <div class="container container-nav">
+      <a href="#" class="logo">NMD<span>.</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how">Process</a></li>
+        <li><a href="#contact" class="btn btn-primary">Connect</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <span class="eyebrow">Strategic Excellence</span>
+        <h1>Elevating Business <br><span class="accent">with Precision</span></h1>
+        <p>Bespoke consultancy for leaders who demand clarity, efficiency, and measurable growth in a complex market.
+        </p>
+        <div class="cta-group">
+          <a href="#contact" class="btn btn-primary">Get Started</a>
+          <a href="#services" class="btn btn-secondary">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="image-stack" id="hero-stack">
+          <!-- Placeholders for the stacking animation -->
+          <div class="stack-item item-1"></div>
+          <div class="stack-item item-2"></div>
+          <div class="stack-item item-3"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="philosophy reveal">
+    <div class="container">
+      <div class="philosophy-content">
+        <h2 class="section-title">The Philosophy of <span class="accent">Bespoke</span> Excellence</h2>
+        <p class="quote">"True consultancy is not about providing templated solutions. It's about deep immersion into
+          the architecture of a business, identifying the silent levers of growth, and pulling them with surgical
+          precision."</p>
+        <div class="founder-info">
+          <span class="name">Nathan D. Masters</span>
+          <span class="title">Managing Partner & Founder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title reveal">Specialized <span class="accent">Disciplines</span></h2>
+      <div class="services-grid">
+        <div class="service-card reveal" style="transition-delay: 0s">
+          <div class="icon">01</div>
+          <h3>Accounting</h3>
+          <p>Structured support including bookkeeping, management accounts, and financial visibility for
+            decision-making.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay: 0.15s">
+          <div class="icon">02</div>
+          <h3>Tax Advisory</h3>
+          <p>Expert compliance and strategic input to reduce risk and ensure transparent submissions.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay: 0.3s">
+          <div class="icon">03</div>
+          <h3>IT Advisory</h3>
+          <p>Security-aware operational tooling and baseline IT guidance designed for reliability and uptime.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay: 0.45s">
+          <div class="icon">04</div>
+          <h3>Business Solutions</h3>
+          <p>Process improvements and operational setup for scaling teams and systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="how-we-work">
+    <div class="container">
+      <h2 class="section-title reveal">How We <span class="accent">Work</span></h2>
+      <div class="process-grid">
+        <div class="process-step reveal" style="transition-delay: 0s">
+          <div class="step-number">01</div>
+          <h3>Understand</h3>
+          <p>We take time to understand your business, its challenges, and priorities before proposing anything.</p>
+        </div>
+        <div class="process-step reveal" style="transition-delay: 0.15s">
+          <div class="step-number">02</div>
+          <h3>Define</h3>
+          <p>Clear deliverables, responsibilities, and timelines are agreed upfront — no surprises.</p>
+        </div>
+        <div class="process-step reveal" style="transition-delay: 0.3s">
+          <div class="step-number">03</div>
+          <h3>Deliver</h3>
+          <p>Clients receive clear outputs, documentation, and guidance with full transparency.</p>
+        </div>
+        <div class="process-step reveal" style="transition-delay: 0.45s">
+          <div class="step-number">04</div>
+          <h3>Evolve</h3>
+          <p>We focus on what happens next — not just what has been completed — to drive forward momentum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="lead-gen reveal">
+    <div class="container container-narrow">
+      <h2>Ready to transform?</h2>
+      <p>Leave your professional email and we'll reach out for a confidential discovery call.</p>
+      <form id="lead-form" class="reveal">
+        <div class="form-group">
+          <input type="email" placeholder="Corporate email address" required name="email">
+          <button type="submit" class="btn btn-primary">Request Callback</button>
+        </div>
+        <p class="disclaimer">Discretion and confidentiality guaranteed.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">NMD<span>.</span></a>
+        <p>Redefining standards through a lens of quiet luxury and architectural precision.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Expertise</h4>
+        <ul>
+          <li><a href="#">Strategy</a></li>
+          <li><a href="#">Finance</a></li>
+          <li><a href="#">Risk</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>contact@nmd.com</p>
+        <p>Mayfair, London</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 NMD Advisory. All rights reserved.</p>
+    </div>
+  </footer>
+
   <script type="module" src="/src/main.js"></script>
 </body>
 
