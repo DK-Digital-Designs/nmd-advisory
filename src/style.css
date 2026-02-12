@@ -737,29 +737,66 @@ footer {
         display: flex;
     }
 
+    /* New Floating Mobile Nav */
     .nav-links {
-        display: none;
+        display: flex;
         position: fixed;
-        top: 0;
-        right: 0;
-        width: 280px;
-        height: 100vh;
-        background: var(--secondary);
+        top: 20px;
+        right: 20px;
+        width: 260px;
+        height: auto;
+        background: rgba(11, 30, 54, 0.98);
+        /* Deep Navy */
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
         flex-direction: column;
-        justify-content: center;
-        gap: 2rem;
-        padding: 2rem;
+        padding: 3rem 2rem 2rem;
+        gap: 1.5rem;
         z-index: 999;
-        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+
+        /* Animation state: Hidden */
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .nav-links.open {
-        display: flex;
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        pointer-events: all;
+    }
+
+    /* Close Button */
+    .nav-close {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 5px;
+        line-height: 1;
+        transition: var(--transition);
+    }
+
+    .nav-close:hover {
+        color: var(--primary);
+        transform: rotate(90deg);
     }
 
     .nav-links a {
         color: white;
-        font-size: 1rem;
+        font-size: 1.1rem;
+        text-align: center;
+        width: 100%;
+        padding: 5px 0;
     }
 
     .nav-links a:not(.btn)::after {
@@ -769,6 +806,20 @@ footer {
     .nav-links .btn-primary {
         text-align: center;
         width: 100%;
+        margin-top: 1rem;
+    }
+
+    /* Hide toggle when menu is open */
+    .nav-toggle.active {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+/* Desktop: Hide close button */
+@media (min-width: 969px) {
+    .nav-close {
+        display: none;
     }
 }
 

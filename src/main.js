@@ -51,10 +51,19 @@ const handleNavScroll = () => {
 
 // Mobile hamburger toggle
 if (navToggle && navLinks) {
+    const navClose = document.getElementById('nav-close');
+
     navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('active');
-        navLinks.classList.toggle('open');
+        navToggle.classList.add('active');
+        navLinks.classList.add('open');
     });
+
+    if (navClose) {
+        navClose.addEventListener('click', () => {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('open');
+        });
+    }
 
     // Close menu when a link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
@@ -62,6 +71,16 @@ if (navToggle && navLinks) {
             navToggle.classList.remove('active');
             navLinks.classList.remove('open');
         });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('open') &&
+            !navLinks.contains(e.target) &&
+            !navToggle.contains(e.target)) {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('open');
+        }
     });
 }
 
