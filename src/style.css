@@ -692,6 +692,257 @@ footer {
 }
 
 /* =============================================
+   1. Hero — Staggered Cascade Entrance
+   ============================================= */
+@keyframes heroSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.hero-content .eyebrow,
+.hero-content h1,
+.hero-content p,
+.hero-content .cta-group {
+    opacity: 0;
+    animation: heroSlideUp 0.9s var(--ease) forwards;
+}
+
+.hero-content .eyebrow {
+    animation-delay: 0.2s;
+}
+
+.hero-content h1 {
+    animation-delay: 0.45s;
+}
+
+.hero-content p {
+    animation-delay: 0.7s;
+}
+
+.hero-content .cta-group {
+    animation-delay: 0.95s;
+}
+
+/* =============================================
+   4. Gold Line Draw — Section Titles
+   ============================================= */
+@keyframes drawLine {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: var(--primary);
+    margin: 1rem auto 0;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.8s var(--ease);
+}
+
+.section-title.active::after,
+.reveal.active .section-title::after {
+    transform: scaleX(1);
+}
+
+/* =============================================
+   5. Service Cards — Slide-In with Blur
+   ============================================= */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px) translateY(20px);
+        filter: blur(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(60px) translateY(20px);
+        filter: blur(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+        filter: blur(0);
+    }
+}
+
+.service-card.reveal {
+    opacity: 0;
+    transform: none;
+}
+
+.service-card.reveal.active {
+    animation-duration: 0.7s;
+    animation-timing-function: var(--ease);
+    animation-fill-mode: forwards;
+}
+
+.service-card.reveal.active:nth-child(odd) {
+    animation-name: slideInLeft;
+}
+
+.service-card.reveal.active:nth-child(even) {
+    animation-name: slideInRight;
+}
+
+/* =============================================
+   3. Animated Step Counters — Scale Entrance
+   ============================================= */
+@keyframes fadeScale {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 0.15;
+        transform: scale(1);
+    }
+}
+
+.process-step.reveal.active .step-number {
+    animation: fadeScale 0.6s var(--ease) forwards;
+}
+
+.process-step .step-number {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* =============================================
+   6. Magnetic CTA Buttons
+   ============================================= */
+.btn-primary {
+    transition: var(--transition), transform 0.2s ease-out;
+    will-change: transform;
+}
+
+/* =============================================
+   7. Philosophy — Floating Particles
+   ============================================= */
+@keyframes particleDrift {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: var(--dot-opacity, 0.2);
+    }
+
+    90% {
+        opacity: var(--dot-opacity, 0.2);
+    }
+
+    100% {
+        transform: translateY(-100px) translateX(30px);
+        opacity: 0;
+    }
+}
+
+@keyframes particleDrift2 {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: var(--dot-opacity, 0.15);
+    }
+
+    90% {
+        opacity: var(--dot-opacity, 0.15);
+    }
+
+    100% {
+        transform: translateY(-80px) translateX(-40px);
+        opacity: 0;
+    }
+}
+
+.philosophy {
+    position: relative;
+}
+
+.philosophy-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.philosophy-content {
+    position: relative;
+    z-index: 1;
+}
+
+.philosophy-particles .dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.philosophy-particles .dot:nth-child(odd) {
+    animation: particleDrift var(--dot-duration, 8s) var(--dot-delay, 0s) ease-in-out infinite;
+}
+
+.philosophy-particles .dot:nth-child(even) {
+    animation: particleDrift2 var(--dot-duration, 10s) var(--dot-delay, 0s) ease-in-out infinite;
+}
+
+/* =============================================
+   Reduced Motion
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =============================================
    Responsive — Tablet
    ============================================= */
 @media (max-width: 968px) {
@@ -866,5 +1117,10 @@ footer {
     .form-group .btn {
         width: 100%;
         text-align: center;
+    }
+
+    /* Hide particles on small screens for performance */
+    .philosophy-particles {
+        display: none;
     }
 }

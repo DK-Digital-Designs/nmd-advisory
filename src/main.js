@@ -129,3 +129,81 @@ if (leadForm) {
         }, 1200);
     });
 }
+
+/* =============================================
+   6. Animated Step Counters
+   ============================================= */
+const stepNumbers = document.querySelectorAll('.step-number');
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.textContent, 10);
+            if (isNaN(target)) return;
+
+            let current = 0;
+            const duration = 600; // ms
+            const startTime = performance.now();
+
+            const animate = (now) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                current = Math.round(progress * target);
+                el.textContent = String(current).padStart(2, '0');
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            };
+
+            el.textContent = '00';
+            requestAnimationFrame(animate);
+            counterObserver.unobserve(el);
+        }
+    });
+}, {
+    threshold: 0.5
+});
+
+stepNumbers.forEach(el => counterObserver.observe(el));
+
+/* =============================================
+   7. Section Title Gold Line Observer
+   ============================================= */
+const sectionTitles = document.querySelectorAll('.section-title:not(.reveal)');
+
+const titleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, {
+    threshold: 0.3,
+    rootMargin: '0px 0px -40px 0px'
+});
+
+sectionTitles.forEach(el => titleObserver.observe(el));
+
+/* =============================================
+   8. Magnetic CTA Buttons
+   ============================================= */
+const magneticBtns = document.querySelectorAll('.btn-primary');
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+if (!isTouchDevice) {
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const strength = 0.25;
+
+            btn.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+}
