@@ -88,11 +88,12 @@ if (navToggle && navLinks) {
    4. Combined Scroll Listener (performance)
    ============================================= */
 let ticking = false;
+const scrollHandlers = [handleNavScroll, handleStackParallax];
+
 window.addEventListener('scroll', () => {
     if (!ticking) {
         window.requestAnimationFrame(() => {
-            handleNavScroll();
-            handleStackParallax();
+            scrollHandlers.forEach(fn => fn());
             ticking = false;
         });
         ticking = true;
@@ -207,3 +208,118 @@ if (!isTouchDevice) {
         });
     });
 }
+
+/* =============================================
+   9. Scroll Progress Bar
+   ============================================= */
+const scrollProgress = document.getElementById('scroll-progress');
+
+const handleScrollProgress = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (scrollProgress) {
+        scrollProgress.style.width = `${progress}%`;
+    }
+};
+
+/* =============================================
+   10. Background Color Morphing on Scroll
+   ============================================= */
+const colorSections = [
+    { selector: '.hero', bg: '#f9f8f4' },   // off-white
+    { selector: '.philosophy', bg: '#f9f8f4' },   // stays (section has own dark bg)
+    { selector: '.services', bg: '#f5f3ed' },   // slightly warmer
+    { selector: '.how-we-work', bg: '#f1ede3' },   // warmer still
+    { selector: '.lead-gen', bg: '#f9f8f4' },   // back to default
+];
+
+const handleColorMorph = () => {
+    const scrollY = window.scrollY + window.innerHeight * 0.4;
+    let currentBg = '#f9f8f4';
+
+    for (let i = colorSections.length - 1; i >= 0; i--) {
+        const el = document.querySelector(colorSections[i].selector);
+        if (el && scrollY >= el.offsetTop) {
+            currentBg = colorSections[i].bg;
+            break;
+        }
+    }
+
+    document.body.style.backgroundColor = currentBg;
+};
+
+/* =============================================
+   11. Hero H1 Letter Split Animation
+   ============================================= */
+const splitHeading = document.querySelector('[data-split-text]');
+
+if (splitHeading) {
+    const processNode = (node) => {
+        const fragment = document.createDocumentFragment();
+
+        node.childNodes.forEach(child => {
+            if (child.nodeType === Node.TEXT_NODE) {
+                // Split text into individual characters
+                const chars = child.textContent.split('');
+                chars.forEach(char => {
+                    const span = document.createElement('span');
+                    span.className = 'split-char' + (char === ' ' ? ' is-space' : '');
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    fragment.appendChild(span);
+                });
+            } else if (child.nodeType === Node.ELEMENT_NODE) {
+                // Preserve child elements (like <br>, <span class="accent">)
+                if (child.tagName === 'BR') {
+                    fragment.appendChild(child.cloneNode());
+                } else {
+                    // Recursively split text inside child elements
+                    const clone = child.cloneNode(false);
+                    const innerFragment = processNode(child);
+                    clone.appendChild(innerFragment);
+                    fragment.appendChild(clone);
+                }
+            }
+        });
+
+        return fragment;
+    };
+
+    const result = processNode(splitHeading);
+    splitHeading.innerHTML = '';
+    splitHeading.appendChild(result);
+
+    // Apply staggered delays
+    const allChars = splitHeading.querySelectorAll('.split-char');
+    allChars.forEach((char, i) => {
+        // Start after the hero cascade (0.45s base for h1) + per-char stagger
+        char.style.setProperty('--char-delay', `${0.5 + i * 0.035}s`);
+    });
+}
+
+/* =============================================
+   12. Clip-Path Section Wipe Observer
+   ============================================= */
+const wipeElements = document.querySelectorAll('.section-wipe');
+
+const wipeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, {
+    threshold: 0.05,
+    rootMargin: '0px 0px -60px 0px'
+});
+
+wipeElements.forEach(el => wipeObserver.observe(el));
+
+/* =============================================
+   Register new scroll handlers
+   ============================================= */
+scrollHandlers.push(handleScrollProgress, handleColorMorph);
+
+// Initial calls
+handleScrollProgress();
+handleColorMorph();

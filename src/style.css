@@ -50,6 +50,7 @@ body {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.6s ease;
 }
 
 /* Typography */
@@ -247,11 +248,13 @@ h3 {
     min-height: 85vh;
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
 }
@@ -276,10 +279,12 @@ h3 {
 }
 
 .hero h1 {
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
-    line-height: 1.05;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    line-height: 1.1;
     margin-bottom: 1.5rem;
     color: var(--secondary);
+    text-wrap: balance;
+    max-width: 600px;
 }
 
 .hero p {
@@ -709,7 +714,6 @@ footer {
 }
 
 .hero-content .eyebrow,
-.hero-content h1,
 .hero-content p,
 .hero-content .cta-group {
     opacity: 0;
@@ -720,9 +724,7 @@ footer {
     animation-delay: 0.2s;
 }
 
-.hero-content h1 {
-    animation-delay: 0.45s;
-}
+/* h1 entrance is handled by the letter-split animation */
 
 .hero-content p {
     animation-delay: 0.7s;
@@ -929,6 +931,158 @@ footer {
 }
 
 /* =============================================
+   Scroll Progress Bar
+   ============================================= */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark), var(--primary));
+    z-index: 1100;
+    transition: width 0.05s linear;
+    box-shadow: 0 0 8px rgba(197, 159, 89, 0.4);
+}
+
+/* =============================================
+   Hero Aurora — Morphing Gradient Blobs
+   ============================================= */
+@keyframes auroraMorph1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.12;
+    }
+
+    33% {
+        transform: translate(60px, -40px) scale(1.15);
+        opacity: 0.18;
+    }
+
+    66% {
+        transform: translate(-30px, 30px) scale(0.9);
+        opacity: 0.1;
+    }
+}
+
+@keyframes auroraMorph2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.1;
+    }
+
+    33% {
+        transform: translate(-50px, 50px) scale(1.2);
+        opacity: 0.15;
+    }
+
+    66% {
+        transform: translate(40px, -20px) scale(0.85);
+        opacity: 0.08;
+    }
+}
+
+@keyframes auroraMorph3 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.08;
+    }
+
+    50% {
+        transform: translate(30px, 40px) scale(1.1);
+        opacity: 0.14;
+    }
+}
+
+.hero-aurora {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero .hero-grid {
+    position: relative;
+    z-index: 1;
+}
+
+.aurora-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    will-change: transform, opacity;
+}
+
+.blob-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(197, 159, 89, 0.3), transparent 70%);
+    top: -10%;
+    left: -5%;
+    animation: auroraMorph1 12s ease-in-out infinite;
+}
+
+.blob-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(11, 30, 54, 0.2), transparent 70%);
+    top: 20%;
+    right: -10%;
+    animation: auroraMorph2 15s ease-in-out infinite;
+}
+
+.blob-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(100, 160, 180, 0.15), transparent 70%);
+    bottom: -15%;
+    left: 30%;
+    animation: auroraMorph3 10s ease-in-out infinite;
+}
+
+/* =============================================
+   Hero H1 Letter Split Animation
+   ============================================= */
+.split-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px) rotateX(-40deg);
+    animation: charReveal 0.5s var(--ease) forwards;
+    animation-delay: var(--char-delay, 0s);
+}
+
+@keyframes charReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+/* Spaces need to preserve whitespace */
+.split-char.is-space {
+    width: 0.3em;
+}
+
+/* =============================================
+   Clip-Path Section Wipe Reveals
+   ============================================= */
+.section-wipe {
+    clip-path: inset(8% 12% 8% 12% round 12px);
+    transition: clip-path 1s var(--ease);
+}
+
+.section-wipe.active {
+    clip-path: inset(0% 0% 0% 0% round 0px);
+}
+
+/* =============================================
    Reduced Motion
    ============================================= */
 @media (prefers-reduced-motion: reduce) {
@@ -954,6 +1108,11 @@ footer {
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        max-width: 100%;
     }
 
     .hero p {
